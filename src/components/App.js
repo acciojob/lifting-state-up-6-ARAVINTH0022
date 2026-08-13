@@ -9,10 +9,12 @@ const App = () => {
     { id: 3, text: "Deploy the React app", completed: false }
   ]);
 
-  const handleComplete = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: true } : todo
-    ));
+  const handleComplete = (idOrIndex) => {
+    setTodos(prevTodos => 
+      prevTodos.map((todo, idx) => 
+        (todo.id === idOrIndex || idx === idOrIndex) ? { ...todo, completed: true } : todo
+      )
+    );
   };
 
   return (
